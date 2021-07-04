@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="form.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>    
+       
+</head>
+<body>
+
+
+    <div class="wrapper fadeInDown" x-data="{methods: app(), login:'', password: '', errorMsg:false}">
+          <div id="formContent">
+            <!-- Tabs Titles -->
+
+           <div x-show="errorMsg" class="alert alert-danger">
+
+               <p x-text="errorMsg"></p>
+               
+           </div>
+
+            <!-- Login Form -->
+            <form>
+              <input type="text" id="login" class="fadeIn second" x-model="login" placeholder="login">
+              <input type="text" id="password" class="fadeIn third" x-model="password" placeholder="password">
+              <button type="submit" class="fadeIn fourth btn btn-info m-3"value="Log In" @click.prevent="methods.validarForm">Log in</button>
+            </form>
+
+            <!-- Remind Passowrd -->
+            <div id="formFooter">
+              <p>Forgot Password</p>
+            </div>
+
+          </div>
+    </div>
+
+  
+<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+</body>
+<script>
+    
+    function app(){
+
+        return {
+
+            validarForm(){
+
+
+                if(this.login.length < 6 || this.password.length  <= 3){
+
+                    this.errorMsg = "Login maior do 10 ou senha menos do que 3"
+
+                }else{
+
+                    this.errorMsg = false;
+                    console.log({'login':this.login, 'Password':this.password})
+
+                    this.login = '',
+                    this.password = ''
+
+                }
+
+                
+
+
+            }
+        }
+
+    }
+
+
+
+
+</script>
+</html>
+
+
+<!------ Include the above in your HEAD tag ---------->
+

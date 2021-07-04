@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Alpane js eventos</title>
+	
+</head>
+<body>
+
+<h1>Eventos </h1>
+
+<!-- x-on -->
+
+
+<div x-data="{show: false, tela:false}">
+
+	<h1 x-show="show">testando os eventos do alpane js</h1>
+	<h1> tela maior que 768</h1>
+
+	<button x-on:click="show =  show ? false: true">click</button>
+	<br>
+
+	<button x-on:mouseover="show =  show ? false: true">mouseover</button>
+	<br>
+	
+	<button x-on:mouseenter="show =  show ? false: true">mouseenter</button>
+	<br>
+
+	<button @mouseleave="show =  show ? false: true">mouseleave</button>
+	<br>
+
+
+	<hr>
+
+	<button x-on:click="myfunction">click</button>
+	<br>
+
+	<div x-on:resize.window="tela = window.outerWidth > 768 ? true : false "></div>
+
+</div>
+
+
+
+
+
+ <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</body>
+<script>
+	
+	function myfunction()
+	{
+		alert('clicou no button')
+	}
+
+
+</script>
+</html>

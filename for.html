@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Alpane js eventos</title>
+	
+</head>
+<body>
+
+<h1>for </h1>
+
+<!-- x-for-->
+
+<!-- x-for tmb precisa de um template com uma tag pai -->
+
+
+<!-- <div x-data="{data:10}">
+
+	<template x-for="i in data">
+
+		<p x-text='i'></p>
+		
+
+	</template>
+
+
+</div> -->
+
+
+<div x-data="{names:['darcio','ana','maria','joao'], input:''}">
+
+	<input  x-model="input">
+	<button @click="names.push(input); input = '' ">Add name</button>
+
+	<ul>
+		<template x-for="name in names" :key="name">	
+		
+			<li x-text="name">
+				
+			</li>
+
+		</template>
+		
+	</ul>
+
+	
+
+
+</div>
+
+
+
+
+
+ <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</body>
+<script>
+	
+	
+
+</script>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Alpane js</title>
+	<style>
+		
+	.red {
+		color:  red;
+
+	}
+
+	.green {
+
+		color:  green;
+	}
+
+
+	</style>
+</head>
+<body>
+
+<h1>Criando componentes com alpine js</h1>
+
+
+
+<!-- x-data -->
+
+<div x-data="{mostrar:true}">
+
+	<button @click="mostrar = mostrar ? false: true ">Trocar</button>
+
+	<p x-show="mostrar">
+		Minha frase
+	</p>
+	
+</div>
+
+
+<!-- x-init -->
+
+<p 
+	x-data="{mostrar2:false}" 
+	x-show="mostrar2"
+	x-init="setTimeout(()=> {mostrar2 = true},3000)"
+
+
+> mostrar 2 frase  </p>
+
+
+<!-- x-show -->
+
+<!-- x-show coloca um display none
+ -->
+
+	<div x-data="{show: false}">
+		
+		<button @click="show = show ? false: true ">habilitar</button>
+
+		<ul x-show="show">
+			<li>
+				JavaScript
+			</li>
+
+			<li>
+				PHP
+			</li>
+		</ul>
+		
+	</div>
+
+<!-- x-if -->
+
+	<!-- x-if tem que ter uma uma div template e dentro um elemento pai -->
+	<!-- x-if não renderiza a tag -->
+
+	<div x-data="{showif: false}">
+		<button @click="showif= showif ? false: true ">habilitar</button>
+
+		<template x-if="showif">
+			<div>
+
+
+				
+				<p>Minha msg if</p>
+
+			</div>
+		</template>
+	</div>
+
+
+	<hr>
+	<hr>
+	<h1>Data Binding</h1>
+
+	<!-- x-model | x-bind -->
+
+	<div x-data="{input:'', errorMessage:'Máximo 10 caracteres'}">
+		
+		<input type="text" x-model="input" >
+
+		<p x-bind:class="input.length >= 9 ? 'red': 'green'" x-show="input.length >= 9" x-text="errorMessage"> <p>
+
+		<div x-bind:class="input.length >= 9 ? 'red': 'green'" x-text="input.length + ' caracteres'"></div>
+	</div>
+
+
+
+	<!-- x-text -->
+	<hr>
+	<h2>x-text</h2>
+	<div x-data="{text: 'Meu span'}">
+
+		<!-- ele vai colocar o texto dentro da tag span innerText-->
+		<span x-text="text">
+			
+		</span>
+		
+	</div>
+
+
+	<!-- x-html -->
+	<hr>
+	<h2>x-html</h2>
+	<div x-data="{html: 'Meu paragrafo'}">
+
+		<!-- ele vai colocar o texto dentro da tag p ele innerHTML -->
+		<p x-html="html">
+			
+		</p>
+		
+	</div>
+
+
+ <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Alpane js propriedades magicas</title>
+	
+</head>
+<body>
+
+<h1>Propriedades magicas</h1>
+
+<!-- $refs -->
+
+<hr>
+
+	<div x-data>	
+
+		<p x-ref="my_p" class ="teste" name="testando">Meu paragrafo</p>
+
+		<button @click="console.log($refs.my_p)">Log</button>	
+
+	<!-- 	não preciso usar document.querySelecto para pegar a tag só usar x-ref que consigo pegar no meu codigo js -->
+
+	</div>
+
+<!-- $el -->
+<hr>
+
+	<!-- faz referencia a ele mesmo -->
+	<button x-data @click="console.log($el)">Log $el</button>
+    
+<!-- $event -->
+<hr>
+	<!-- essa propriedade tras as caracteristicas do evento
+	essa sim vou usar bastante -->
+	<div>	
+		<button x-data @click="console.log($event.target.innerText)" value="dss">Log event</button>
+
+    </div>
+
+<!-- $dispatch -->
+<hr>
+	<!-- disparar uma função -->
+
+	<!-- <div x-data @myEvent="console.log($event.detail)">
+
+	<button @click="$dispatch('myEvent',{name:'darcio'})">Dispatch</button>
+
+
+    </div>	 -->
+    <!-- não consegui fazer funcionar -->
+
+
+    <div x-on:notify="console.log('dispatch foi')">
+  		<button x-on:click="$dispatch('notify')">...dispatch</button>
+	</div>
+
+
+<!-- $nextTick -->
+<hr>
+	
+	<!-- quando o alpine recarrega alguma propriedade do dom algum elemento do x-data , essa função é chamada $nextTick  -->
+	<div x-data = "{user: 'user', admin: false}">
+
+		<button
+
+			x-on:click=" user = 'admin'; $nextTick(()=>{user == 'admin' ? admin = true : false})"
+			x-text = "user"
+
+
+		>nextTick</button>	
+
+		<input x-show="admin">
+
+		<hr>
+
+   </div>		
+<!-- $watch -->
+
+	<!-- watch vai ficar assistindo a variavel -->
+
+
+	<div x-data ="{show:true}" x-init="$watch('show',value=> console.log(value))">
+
+
+	<button @click="show = ! show">Watch</button>
+		
+	</div>
+
+
+
+
+ <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</body>
+<script>
+	
+	
+
+</script>
+</html>

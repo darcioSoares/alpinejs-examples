@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Alpane js extra</title>
+</head>
+<body>
+
+	<div x-data ="{methods:methods(), user:'darcio'}" >
+
+		<form>
+		
+			<div>
+				<label for="name">Name</label>
+				<input type="text" name="name" @keyup="methods.KeyUpInput($event)">
+			</div>
+			<div>
+				<label for="sobrenome">Sobrenome</label>
+				<input type="text" name="sobrenome">
+			</div>
+
+			<button @click.prevent="methods.submitBut">Enviar</button>
+
+			<button @click.prevent="methods.alterUser" >Alterar user</button>
+		</form>
+
+		<hr>
+		<p x-text="user"></p>
+
+
+		<hr>
+
+		<div x-data="{admin:false}">
+
+			<p x-show="admin">Admin</p>
+
+			<button @click="methods.mudar(admin)">mudar</button>
+			
+		</div>
+		
+	</div>
+
+
+
+
+
+
+	<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+</body>
+<script>
+	function methods(){
+		return {
+
+			KeyUpInput(event){
+				console.log(event.target.value)
+			},
+
+			submitBut(){
+				alert("enviando formulario")
+			},
+			alterUser(){
+				this.user = "joao";
+				
+			},
+			mudar(admin){
+
+				this.admin = admin ? false: true 
+
+				console.log(admin)
+			},
+			alerta(){
+				alert("mudouuuuuu")
+			},
+			teste(){
+				console.log('testando')
+			}
+
+		}
+	}
+
+</script>
+
+</html>
