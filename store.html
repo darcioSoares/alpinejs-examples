@@ -1,0 +1,57 @@
+<html>
+    <head>        
+         <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    </head>
+    <body>
+
+        <div x-data="{teste:true}">
+
+            <p x-show="teste">testando aqui</p>
+            <p x-show="$store.alpine.darkMode">store darkMode</p>
+            <p x-show="$store.alpine.dark">store dark</p>
+
+            <h1 x-text="$store.alpine.name"></h1>
+
+        </div>
+
+        <hr>
+
+        <div x-data="{teste2:true}">
+
+            <p x-show="teste2">testando aqui teste 2</p>
+            <p x-show="$store.alpine.darkMode">store darkMode</p>
+            <p x-show="$store.alpine.dark">store dark</p>
+
+            <h1 x-text="$store.alpine.name"></h1>
+
+        </div>
+
+        <hr>
+
+        <div x-data>
+            <button @click="$store.alpine.toggle()">Toggle</button>
+            <br>
+
+            <button @click="$store.alpine.chanceName('joao')">trocar nome</button>
+            <input type="text" x-model='$store.alpine.name'>
+        </div>
+        
+        <script>
+
+            document.addEventListener('alpine:init', () => {
+                Alpine.store('alpine', {
+                    darkMode:true,
+                    dark:true,
+                    name:'',
+                    toggle(){
+                        this.darkMode = this.darkMode ? false : true
+                    },
+                    chanceName(value){
+                        this.name = value
+                    }
+                })
+            })
+
+        </script>
+    </body>
+</html>
